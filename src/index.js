@@ -34,11 +34,18 @@ function appendDogBreeds(json) {
 }
 
 function filterBreeds(e, breeds) {
+  replaceDogBreeds();
   const letter = e.target.value;
-  const breedList = document.querySelector('#dog-breeds')
-  breedList.removeChild();
   breeds = breeds.filter(([breed]) => breed[0] === letter || letter === 'all');
   breeds.forEach(createDogList);
+}
+
+function replaceDogBreeds() {
+  document.querySelector('#dog-breeds').remove()
+  
+  const breedList = document.createElement('ul');
+  breedList.id = 'dog-breeds';
+  document.body.appendChild(breedList);
 }
 
 function createDogList(breed) {
