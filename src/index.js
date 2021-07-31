@@ -30,12 +30,16 @@ function appendDogBreeds(json) {
   const dropDown = document.querySelector('#breed-dropdown');
   dropDown.addEventListener('change', (e) => filterBreeds(e, breeds))
 
-
   breeds.forEach(createDogList);
 }
 
-//implement a function that uses the dropdown
-//the functionality of this function will use the dropdown menu and filter out the dog breeds that start with the letter that is selected in the dropdown
+function filterBreeds(e, breeds) {
+  const letter = e.target.value;
+  const breedList = document.querySelector('#dog-breeds')
+  breedList.removeChild();
+  breeds = breeds.filter(([breed]) => breed[0] === letter || letter === 'all');
+  breeds.forEach(createDogList);
+}
 
 function createDogList(breed) {
   const li = document.createElement('li');
