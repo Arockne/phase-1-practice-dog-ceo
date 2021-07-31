@@ -10,6 +10,12 @@ function getRandomImages() {
   .catch(error => document.body.appendChild(error.message))
 }
 
+function getBreeds() {
+  fetch('https://dog.ceo/api/breeds/list/all')
+  .then(resp => resp.json())
+  .then(json => appendBreedsToList(json.message));
+}
+
 //appends images to DOM
 function createImages(images) {
   images.forEach(image => {
@@ -22,4 +28,5 @@ function createImages(images) {
 
 document.addEventListener('DOMContentLoaded', () => {
   getRandomImages();
+  getBreeds();
 })
