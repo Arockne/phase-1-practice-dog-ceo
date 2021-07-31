@@ -32,19 +32,24 @@ function appendDogBreeds(json) {
     li.textContent = breed[0];
 
     if (breed[1].length > 0) {
-      const ul = document.createElement('ul');
-
-      breed[1].forEach(otherBreed => {
-        const innerLi = document.createElement('li');
-        innerLi.textContent = otherBreed;
-        ul.appendChild(innerLi);
-      })
-
-      li.appendChild(ul);
+      const sub = listSimiliarBreeds(breed[1])
+      li.appendChild(sub);
     }
 
     document.querySelector('#dog-breeds').appendChild(li);
   })
+}
+
+//implement a function that uses the dropdown
+  //the functionality of this function will use the dropdown menu and filter out the dog breeds that start with the letter that is selected in the dropdown
+function listSimiliarBreeds(subBreeds) {
+  const ul = document.createElement('ul');
+  subBreeds.forEach(sub => {
+    const li = document.createElement('li');
+    li.textContent = sub;
+    ul.appendChild(li);
+  })
+  return ul;
 }
 
 function init() {
