@@ -21,7 +21,7 @@ function appendBreedsToList(breeds) {
   mainBreeds.forEach(breed => {
     const li = document.createElement('li');
     li.textContent = breed;
-    li.addEventListener('click', e => e.target.style.color = 'red');
+    li.addEventListener('click', e => e.target.style.color = '#880808');
     document.querySelector('#dog-breeds').appendChild(li);
   })
 }
