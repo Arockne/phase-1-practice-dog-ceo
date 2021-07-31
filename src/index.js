@@ -10,6 +10,16 @@ function getRandomImages() {
   .catch(error => document.body.appendChild(error.message))
 }
 
+//appends images to DOM
+function createImages(images) {
+  images.forEach(image => {
+    const img = document.createElement('img');
+    img.src = image;
+    img.width = 250;
+    document.body.appendChild(img);
+  })
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   getRandomImages();
 })
