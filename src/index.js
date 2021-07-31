@@ -42,7 +42,7 @@ function filterBreeds(e, breeds) {
 
 function replaceDogBreeds() {
   document.querySelector('#dog-breeds').remove()
-  
+
   const breedList = document.createElement('ul');
   breedList.id = 'dog-breeds';
   document.body.appendChild(breedList);
@@ -70,9 +70,22 @@ function listSimiliarBreeds(subBreeds) {
   return ul;
 }
 
+function addMoreDropdownOptions() {
+  const dropDown = document.querySelector('#breed-dropdown')
+  
+  for (let charCode = 'e'.charCodeAt(); charCode <= 122; charCode++) {
+    const option = document.createElement('option');
+    const value = String.fromCharCode(charCode);
+    option.value = value;
+    option.textContent = value;
+    dropDown.appendChild(option);
+  }
+}
+
 function init() {
   getRandomImages();
   getDogBreeds();
+  addMoreDropdownOptions();
 }
 
 init();
