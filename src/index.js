@@ -20,11 +20,13 @@ function appendImages(json) {
 function getDogBreeds() {
   fetch('https://dog.ceo/api/breeds/list/all')
   .then(resp => resp.json())
-  .then(json => json.message)
+  .then(json => console.log(json))
+  .catch(error => document.querySelector('#dog-breeds').appendChild(error.message))
 }
 
 function init() {
   getRandomImages();
+  getDogBreeds();
 }
 
 init();
