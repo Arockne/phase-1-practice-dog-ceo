@@ -20,8 +20,31 @@ function appendImages(json) {
 function getDogBreeds() {
   fetch('https://dog.ceo/api/breeds/list/all')
   .then(resp => resp.json())
-  .then(json => console.log(json))
-  .catch(error => document.querySelector('#dog-breeds').appendChild(error.message))
+  .then(appendDogBreeds)
+  .catch(error => console.log(error))
+}
+
+function appendDogBreeds(json) {
+  const breeds = Object.entries(json.message);
+
+  breeds.forEach(breed => {
+    const li = document.createElement('li');
+    li.textContent = breed[0];
+
+    if (breed[1].length > 0) {
+      const ul = document.createElement('ul');
+
+      breed[1].forEach(otherBreed => {
+        const innerLi = document.createElement('li');
+        innerLi.textContent = otherBreed;
+        ul.appendChild(innerLi);
+      })
+
+      li.appendChild(ul);
+    }
+
+    document.querySelector('#dog-breeds').appendChild(li);
+  })
 }
 
 function init() {
