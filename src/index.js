@@ -16,6 +16,16 @@ function getBreeds() {
   .then(json => appendBreedsToList(json.message));
 }
 
+function appendBreedsToList(breeds) {
+  const mainBreeds = Object.keys(breeds);
+  mainBreeds.forEach(breed => {
+    const li = document.createElement('li');
+    li.textContent = breed;
+    li.addEventListener('click', e => e.target.style.color = 'red');
+    document.querySelector('#dog-breeds').appendChild(li);
+  })
+}
+
 //appends images to DOM
 function createImages(images) {
   images.forEach(image => {
